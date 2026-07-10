@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My food menu</title>
+    <style>
+    body{
+        font-family: arial;
+        background: lightblue;
+        padding: 30px;
+        text-align: center;
+    }
+
+    h1{
+        color: orangered;
+    }
+
+    h1+p{
+        background: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: #bf360c;
+        display: inline-block;
+    }
+
+    ul{
+        padding:0;
+        margin-top: 20px;
+    }
+
+    ul>li{
+           list-style: none;
+           font-size: 18px;
+           font-weight: bold;
+           color: #5d4037;
+           padding: 10px 20px;
+           margin: 6px auto;
+           width: 260px;
+           background: #fff3e0;
+           border-radius: 8px;
+    }
+
+    ul li:nth-child(3){
+        background: #ffe082;
+        color: #e65c00;
+    }
+
+    .desc{
+        color:#555;
+        margin-top: 20px;
+        font-size: 15px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .desc::first-letter{
+        font-size: 220%;
+        color: #e65c00;
+        font-weight: bold;
+    }
+
+    .links{
+        margin-top: 25px;
+    }
+
+    a{
+        color: #e65c00;
+        text-decoration: none;
+        font-size: 15px;
+        margin: 0 12px;
+        padding: 8px 18px;
+        border: 2px solid #e65c00;
+        border-radius: 8px;
+    }
+
+    a:hover{
+        background: #e65c00;
+        color: white;
+    }
+
+    h3{
+        color:#bf360c;
+    }
+    </style>
+</head>
+<body>
+    <h1>My food menu</h1>
+    <p>pick your favourite snacks and dig in!</p>
+
+    <ul>
+    <li>Pizza</li>
+    <li>Burger</li>
+    <li>Noodles</li>
+    </ul>
+    
+    <p>pick your favourite dish and dig in!</p>
+
+    <ul>
+        <li>###########</li>
+        <li>###########</li>
+        <li>###########</li>
+        <li>###########</li>
+        <li>###########</li>
+    </ul>
+
+
+    <p class="desc">Every dish on this menu is made with love and loads of flavour. Try them all and find your favourite!</p>
+
+    <div class="links">
+        <a href="#">Order now</a>
+        <a href="#">See More</a>
+    </div>
+
+    <footer>
+        <h3>MADE BY TANISHK JAIN</h3>
+    </footer>
+</body>
+</html>

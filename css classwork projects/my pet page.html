@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My pet page</title>
+    <style>
+        body{
+            background-color: lightyellow;
+            padding: 65px 30px 30px 30px;
+            min-height: 1800px;
+        }
+        h1, h2{color: darkorange;}
+
+        .top-bar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: darkorange;
+            color: white;
+            padding: 14px 20px;
+        }
+
+        .list-item{
+            background-color: white;
+            border: 2px solid darkorange;
+            padding: 10px 20px;
+            margin: 5px 0;
+        }
+
+        .special-note{
+            position: relative;
+            left: 30px;
+            background-color: gold;
+            padding: 10px 20px;
+        }
+
+        .pet-card{
+            position: relative;
+            background-color: whitesmoke;
+            padding: 15px 25px;
+        }
+
+        .badge{
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: forestgreen;
+            color: white;
+            padding: 4px 8px;
+        }
+
+        .section-label{
+            position: sticky;
+            top: 55px;
+            background-color: darkorange;
+            color: white;
+            padding: 10px 20px;
+            margin: 15px 0 8px;
+        }
+
+        footer{color: darkorange;
+               position: sticky;
+               top: 100px}
+    </style>
+</head>
+<body>
+    <div class="top-bar">My Pet Page - Buddy the labrador</div>
+    <h1>Meet Buddy!</h1>
+    <h2>static</h2>
+    <div class="list-item">Breed: labrador</div>
+    <div class="list-item">Age: 2 years old</div>
+
+    <h2>Relative</h2>
+    <p>This note shifts right from its normal spot.</p>
+    <div class="special-note">pet of the month!</div>
+
+    <h2>absolute</h2>
+    <p>the badge is pinned to the corner of the card.</p>
+    <div class="pet-card">
+        <p>Buddy - labrador, 2 years</p>
+        <div class="badge">adopted!</div>
+    </div>
+
+    <h2>sticky</h2>
+    <p>scroll down - the label locks at the top!</p>
+    <div class="section-label">More pets available</div>
+    <div class="list-item">luna - poodle, 1year</div>
+    <div class="list-item">max - german shepherd, 3years</div>
+    <div class="list-item">daisy - beagle, 4years</div>
+    <div class="list-item">rocky - golden retriever, 2years</div>
+    <div class="list-item">bella - border collie, 1year</div>
+    <div class="list-item">charlie - shih Tzu, 5years</div>
+    <div class="list-item">coco - husky, 3years</div>
+    <div class="list-item">milo - tabbu cat, 2years</div><br><br>
+    <footer>
+        <center>
+    <h1>Made by- Tanishk jain</h1>
+    </center>
+    </footer>
+
+</body>
+</html>

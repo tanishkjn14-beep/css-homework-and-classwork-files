@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Study Progress Dashboard</title>
+
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+
+        body {
+            margin: 0;
+            background: #f4f8ff;
+            font-family: Arial, sans-serif;
+            color: #222;
+        }
+
+        .navbar {
+            border-bottom: 4px solid #0069d9;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            margin-right: 35px;
+        }
+
+        .nav-item {
+            margin: 0 3px;
+            border-radius: 5px;
+        }
+
+        .nav-link {
+            padding: 8px 18px;
+            color: white;
+        }
+
+        .nav-link:hover {
+            background: #0069d9;
+        }
+
+        .mainbox {
+            margin: 35px auto;
+            width: 92%;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #d9e5f5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .img {
+            width: 400px;
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        .info {
+            vertical-align: top;
+            padding: 10px 25px;
+        }
+
+        .info h2 {
+            font-weight: bold;
+            color: #1456a0;
+            margin-bottom: 18px;
+        }
+
+        .info p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #856404;
+            text-align: justify;
+        }
+
+        .sync {
+            margin-top: 35px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            border: 1px solid #d9e5f5;
+        }
+
+        .sync h3 {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .spinner-border {
+            margin: 15px;
+            width: 80px;
+            height: 80px;
+        }
+
+        .progressbox {
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #d9e5f5;
+        }
+
+        .progress {
+            height: 35px;
+            border-radius: 20px;
+            background: #e5e5e5;
+        }
+
+        .progress-bar {
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        .last {
+            color: #1456a0;
+            font-weight: bold;
+        }
+
+        .footerbox {
+            margin-top: 35px;
+            padding: 30px;
+            background: white;
+            border-top: 4px solid #28a745;
+        }
+
+        footer h1 {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        footer abbr {
+            text-decoration: none;
+            color: #28a745;
+        }
+
+        .btn {
+            font-size: 18px;
+            padding: 10px 30px;
+            border-radius: 8px;
+        }
+
+        .btn:hover {
+            background: #218838;
+        }
+
+          .NEXTHR{
+            border-top: 4px solid #28a745;
+          }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-primary">
+
+        <h5 class="navbar-brand text-white">
+            My Study Progress Dashboard
+        </h5>
+
+        <ul class="navbar-nav">
+
+            <li class="nav-item bg-success">
+                <a class="nav-link text-white" href="#">
+                    Home
+                </a>
+            </li>
+
+            <li class="nav-item bg-success">
+                <a class="nav-link text-white" href="#">
+                    Progress
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <div class="mainbox">
+
+        <table>
+
+            <tr>
+
+                <td>
+
+                    <img
+                        class="img"
+                        src="https://d3sujgifhk94se.cloudfront.net/wp-content/uploads/2021/03/24103113/blog_posts-11_Artboard-1-copy-8.png"
+                        alt="Study Progress">
+
+                </td>
+
+                <td class="info">
+
+                    <h2>
+                        You will get information here about:
+                    </h2>
+
+                    <p>
+                        My Study Progress Dashboard provides all the important
+                        information about my studies and learning progress in one
+                        place. It shows the subjects I am studying, the topics I
+                        have completed, the tasks and assignments that are still
+                        pending, my test and quiz scores, attendance, study time,
+                        and overall academic performance. It also helps me keep
+                        track of my daily and weekly progress and understand how
+                        consistently I am studying. By looking at this information,
+                        I can easily identify the subjects or topics where I am
+                        performing well and the areas where I need more practice
+                        and attention. The dashboard can also help me set study
+                        goals, monitor my improvement over time, and stay
+                        organized with my schoolwork. Overall, it gives me a clear
+                        picture of my learning journey and helps me make better
+                        decisions about how I should plan and improve my studies.
+                    </p>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+    <center>
+
+        <div class="sync">
+
+            <h3>
+                Syncing your current progress
+            </h3>
+
+            <br>
+
+            <div>
+
+                <div class="spinner-border text-success"></div>
+
+                <div class="spinner-border text-primary"></div>
+
+                <div class="spinner-border text-warning"></div>
+
+                <div class="spinner-border text-danger"></div>
+
+            </div>
+
+        </div>
+
+    </center>
+
+
+    <div class="progressbox">
+
+        <h2 class="text-center last">
+            Last week progress 👇
+        </h2>
+
+        <br>
+
+        <div class="progress">
+
+            <div class="progress-bar bg-danger" style="width: 99%;">
+                99%
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footerbox">
+
+        <center>
+
+            <h1>
+                For
+                <abbr title="More Details">MD</abbr>
+                click this button
+            </h1>
+
+            <br>
+
+            <button class="btn btn-success">
+                CLICK ME!
+            </button>
+
+        </center><br><BR>
+
+    </footer>
+
+    <footer CLASS="NEXTHR"><BR><BR>
+        
+         <CENTER>
+
+        <h5>MADE BY TANISHK JAIN</h5>
+
+         </CENTER>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>activity:</h1><br><br>
+    
+    <h1 id="codedisplay"></h1><br><br><br>
+    <h1 id="name"></h1><br>
+    <h1 id="relationship"></h1><br>
+    <h1 id="city"></h1>
+    <script>
+        var person = {
+            nameElement: "pratham",
+            relationship: "bestfriend",
+            city: "delhi"
+
+        };
+
+        var nameElement = document.getElementById("name");
+        var relationship = document.getElementById("relationship");
+        nameElement.textContent = person.name;
+        relationship.textContent = person.relationship;
+
+        var city = document.getElementById("city");
+        city.textContent = person["city"];
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bonus activity</title>
+    <style>
+
+        body{
+            background-color: cornflowerblue;
+        }
+        h1{
+            color: darkblue;
+        }
+
+        li{
+            color: darkblue;
+            width: 20px;
+            height: 20px;
+        }
+
+        div{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>this is the activity👇👇</h1><br>
+    <div>
+    <ol>
+        <li id="name"></li>
+        <li id="breed"></li>
+        <li id="age"></li>
+    </ol>
+    </div>
+    <script>
+    var dog = {
+       name: "hello",
+       breed: "germanshephered",
+       age: "17"
+    };
+
+    var namee = document.getElementById("name");
+    var breed = document.getElementById("breed");
+    var age = document.getElementById("age");
+
+    namee.textContent = dog.name;
+    breed.textContent = dog.breed;
+    age.textContent = dog["age"];
+    </script>
+</body>
+</html>

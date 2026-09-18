@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my magic word lab</title>
+    <style>
+        body{ 
+            background: lightyellow;
+        }
+
+        h1,h3{
+            color: darkorange;
+        }
+        .box{
+            background: white;
+            color: darkorange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <h1 class="mb-1">my magic world lab</h1>
+        <p class="text-muted mb-4">discover types, switch them, find and swap words, and catch sneaky errors!</p>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="card-body">
+                    <h3 class="card-title">what type is it?</h3>
+                    <button class="btn btn-warning" onclick="checkTypes()">reveal the types!</button>
+                    <div id="typeResult" class="box p-3 mt-3 rounded">press the button to reveal the secret types!
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">switch the types</h3>
+                    <input id="numIn" class="form-control mb-2" placeholder="type any number here (try: 42)">
+                    <button class="btn btn-warning mr-2" onclick="toStr()">turn into text</button>
+                    <button class="btn btn-warning" onclick="toNum()">turn into number</button>
+                    <div id="convResult"  class="box p-3 mt-3 rounded">type a number above then press a button!</div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="card-body">
+                        <h3 class="card-title">find and swap a word</h3>
+                        <input id="findW" class="form-control mb-2" placeholder="word to find (try: dragon)">
+                        <input id="swapW" class="form-control mb-2" placeholder="swap it with (try: wizard)">
+                        <button class="btn btn-warning mr-2" onclick="doSearch()">find it!</button>
+                        <button class="btn btn-warning mr-2" onclick="doReplace()">swap it!</button>
+                        <div id="srResult" class="box p-3 mt-3 rounded">sentence: "the dragon flew over the big castle."</div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">catch the mistake</h3>
+                        <input id="divIn" class="form-control mb-2" placeholder="divide 100 by this - try a number ot type something silly!">
+                        <button class="btn btn-warning" onclick="trySafe()">try it!</button>
+                        <div id="errResult" class="box p-3 mt-3 rounded">try a number or something silly and see what happens!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var sen = "the dragon flew over the big castle.";
+        function checkTypes() {
+          document.getElementById("typeResult").innerText = 
+          "Score 42     - type: " + typeof 42 + "\n" +
+          "name Alex'   - type: " + typeof "Alex" + "\n" +
+          "Game over true -type: " + typeof true;
+        }
+
+        function toStr() {
+            var v = document.getElemtById("numIn").value;
+            document.getElementById("convResult").innerHTML = "number('" + v +"') = " + Number(v) + " - now it is a:  " + typeof Number(v);
+        }
+
+        function toNum() {
+            var v = document.getElementById("numIn").value;
+            document.getElemntById("convResult").innerHTML = "Number(' " + v + " ') = " + Number(v) + " - now it is a: " + typeof String(v);
+        }
+
+        function doSearch() {
+            var w = document.getElementById("findW").value;
+            var p = sen.search(w);
+            document.getElementById("srResult").innerHTML = p === -1 ? "'" + w + "' is not in the sequence - try another word!" : "Found '" + w + "' hiding at position " + p + "!";
+        }
+
+        function doReplace() {
+            var w = document.getElementById("findW").value;
+            document.getElementById("srResult").innerHTML = "new sentence: " + sen.replace(w, document.getElementById("swapW").value);
+        }
+
+          function trySafe(){
+            try{
+                var n = document.getElementById("divIn").value;
+                if (n === "" || is NaN(n)) {throw "that is not a number - you caught the Error!";}
+                
+            }
+          }
+        </script>
+        <body>

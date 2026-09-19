@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my delivery tracker</title>
+    <style>
+        body{
+            font-family: arial, sans-serif;
+            background: aliceblue;
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1{
+            color: #ff5a43
+        }
+
+        button{
+            background: #ff5a43;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        div {
+            border: 1px solid #ff5a43;
+            width: 280px;
+            margin: 6px auto;
+            padding: 8px 12px;
+            text-align: left;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <h1>my delivery tracker</h1>
+    <button onclick="saveOrder()">save order</button>
+    <button onclick="startDelivery()">start delivery</button>
+
+    <div>JSON text: <span id="json-text"></span></div>
+    <div>loaded item: <span id="loaded-item"></span></div>
+    <div>loaded price: <span id="loaded-price"></span></div>
+    <div>status: <span id="status"></span></div>
+    <div>result: <span id="result"></span></div>
+
+    <script>
+
+        let order = {
+            item: "pizza",
+            price: 5,
+            shop: "my snack shop"
+        }
+
+        function saveOrder() {
+            let jsonText = JSON.stringify(order);
+            let loadedOrder = JSON.parse(jsonText);
+
+            document.getElementById("json-text").innerHTML = jsonText;
+            document.getElementById("loaded-item").innerHTML = loadedOrder.item;
+            document.getElementById("loaded-price").innerHTML =  "$" + loadedOrder.price;
+        }
+
+        function delay(ms) {
+            return new Promise(function (resolve) {
+                setTimeout(resolve, ms);
+            });
+        }
+
+        async function startDelivery() {
+            document.getElementById("result").innerHTML = "";
+
+            document.getElementById("status").innerHTML = "order received!";
+            setTimeout(function () {
+                document.getElementById("status").innerHTML = "kitchen is preparing........";
+            }, 1000);
+
+            await delay(3000);
+            document.getElementById("status").innerHTML = "out for delivery!";
+
+            await delay(2000);
+            document.getElementById("result").innerHTML = "your order has arrived!";
+
+        }
+    </script>
+</body>
+</html>

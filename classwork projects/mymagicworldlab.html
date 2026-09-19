@@ -65,6 +65,7 @@
         </div>
     </div>
 
+    </div>
     <script>
         var sen = "the dragon flew over the big castle.";
         function checkTypes() {
@@ -76,12 +77,12 @@
 
         function toStr() {
             var v = document.getElemtById("numIn").value;
-            document.getElementById("convResult").innerHTML = "number('" + v +"') = " + Number(v) + " - now it is a:  " + typeof Number(v);
+            document.getElementById("convResult").innerHTML = "String(" + v + ") = '" + String(v) + "' - now it is a:  " + typeof String(v);
         }
 
         function toNum() {
             var v = document.getElementById("numIn").value;
-            document.getElemntById("convResult").innerHTML = "Number(' " + v + " ') = " + Number(v) + " - now it is a: " + typeof String(v);
+            document.getElemntById("convResult").innerHTML = "Number(' " + v + " ') = " + Number(v) + " - now it is a: " + typeof Number(v);
         }
 
         function doSearch() {
@@ -95,12 +96,13 @@
             document.getElementById("srResult").innerHTML = "new sentence: " + sen.replace(w, document.getElementById("swapW").value);
         }
 
-          function trySafe(){
+          function trySafe() {
             try{
                 var n = document.getElementById("divIn").value;
-                if (n === "" || is NaN(n)) {throw "that is not a number - you caught the Error!";}
-                
-            }
-          }
+                if (n === "" || isNaN(n)) {throw "that is not a number - you caught the Error!";}
+                document.getElementById("errResult").innerHTML = "100 / " + n + " = " + (100 / Number(n)) + " - well done!"; 
+            } catch (err) { document.getElementById("errResult").innerHTML = "Error caught: " + err; }
+        }
         </script>
-        <body>
+        </body>
+        </html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lucky draw</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Lucky draw</h1>
+    <p>enter your name and guess a number to win!</p>
+
+    <input type="text" id="name" placeholder="Guess a number (1 to 5)" min="1" max="5" required><br>
+    <p id="msg-guess"></p>
+
+    <button onclick="checkForm()">try my luck!</button>
+    <p id="result"></p>
+    <p id="timer"></p>
+
+    <script>
+
+        var seconds = 0;
+        setInterval(function () {
+            seconds = seconds = seconds + 1;
+            document.getElementById("timer").textcontent = "you have been here for " + seconds + " seconds!";
+        }, 1000);
+
+        function checkForm() {
+            var name = document.getElementById("name").value;
+            var guess = document.getElementById("guess").value;
+            var ok = true;
+
+            if (name == "") {
+                document.getElementById("msg-name").textContent = "please enter your name!";
+                 document.getElementById("msg-name").style.color = "red";
+                 ok = false;
+            } else {
+                 document.getElementById("msg-name").textContent = "great name!";
+                  document.getElementById("msg-name").style.color = "green";
+            }
+
+            if (guess == "") {
+                 document.getElementById("msg-guess").textContent = "please enter a guess!";
+                 document.getElementById("msg-guess").style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

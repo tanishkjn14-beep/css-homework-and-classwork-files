@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Jungle Explorer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body { position: relative; }
+    .slide { height: 150px; padding: 40px; color: white; text-align: center; }
+    .one { background: forestgreen; }
+    .two { background: steelblue; }
+    .three { background: purple; }
+    section { padding: 50px 20px; min-height: 220px; }
+    #forest { background: honeydew; }
+    #river { background: aliceblue; }
+    #night { background: lavenderblush; }
+  </style>
+</head>
+<body data-spy="scroll" data-target="#nav" data-offset="60">
+
+<div id="c" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active slide one"><h3>🌿 Jungle Forest</h3></div>
+    <div class="carousel-item slide two"><h3>🐊 Jungle River</h3></div>
+    <div class="carousel-item slide three"><h3>🌙 Night Safari</h3></div>
+  </div>
+  <a class="carousel-control-prev" href="#c" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+  <a class="carousel-control-next" href="#c" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+</div>
+
+<nav id="nav" class="navbar navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand" href="#">Jungle Explorer</a>
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item"><a class="nav-link mx-1" href="#forest">Forest</a></li>
+    <li class="nav-item"><a class="nav-link mx-1" href="#river">River</a></li>
+    <li class="nav-item"><a class="nav-link mx-1" href="#night">Night</a></li>
+  </ul>
+</nav>
+
+<section id="forest">
+  <h3>🌿 Rainforest</h3>
+  <p>Rainforests are home to monkeys, birds and colourful butterflies.</p>
+</section>
+
+<section id="river">
+  <h3>🐊 Jungle River</h3>
+  <p>Rivers provide water and shelter to fish, frogs and crocodiles.</p>
+</section>
+
+<section id="night">
+  <h3>🌙 Night Safari</h3>
+  <p>At night, owls, bats and other animals explore the jungle.</p>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

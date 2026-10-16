@@ -5,21 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lucky draw</title>
     <style>
+    body {
+        font-family: Arial, sans-serif;
+        background: aliceblue;
+        text-align:center;
+        padding: 30px;
+    }
 
+    h1{
+        color: navy;
+    }
+
+    input {
+        padding: 8px;
+        margin: 5px;
+        border: 2px solid navy;
+        border-radius: 6px;
+        width: 220px;
+    }
+
+    button{
+        background: navy;
+        color: white;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    #timer {
+        color: grey;
+    }
     </style>
 </head>
 <body>
     <h1>Lucky draw</h1>
     <p>enter your name and guess a number to win!</p>
 
-    <input type="text" id="name" placeholder="Guess a number (1 to 5)" min="1" max="5" required><br>
+    <input type="text" id="name" placeholder="your name" required><br>
+
+    <p id="msg-name"></p>
+
+    <input type="number" id="guess" placeholder="Guess a number (1 to 5)" min="1" max="5" required><br>
+
     <p id="msg-guess"></p>
 
     <button onclick="checkForm()">try my luck!</button>
     <p id="result"></p>
     <p id="timer"></p>
 
-    <script>
+   <script>
 
         var seconds = 0;
         setInterval(function () {
@@ -44,6 +79,20 @@
             if (guess == "") {
                  document.getElementById("msg-guess").textContent = "please enter a guess!";
                  document.getElementById("msg-guess").style.color = "red";
+            } else {
+                document.getElementById("msg-guess").textContent = "guess saved";
+                document.getElementById("msg-guess").style.color = "green";
+            }
+
+            if (ok == true) {
+                var lucky = Math.floor(Math.random() * 5) + 1;
+                if (guess == lucky) {
+                    document.getElementById("result").textContent = "you win, " + name + "! The lucky number was " + lucky + "!";
+                    document.getElementById("result").style.color = "green";
+                } else {
+                    document.getElementById("result").textContent = "so close. " + name + "! The lucky number was " + lucky + ". try again!";
+                    document.getElementById("result").style.color = "navy";
+                }
             }
         }
     </script>

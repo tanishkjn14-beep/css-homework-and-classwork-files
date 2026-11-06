@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Zoo Manager</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --ink: #18352b;
+    --muted: #6c7c73;
+    --green: #2e7655;
+    --pale: #eff6ee;
+    --line: #e4ebe3;
+    --white: #fff;
+    --shadow: 0 14px 40px rgba(29,67,48,.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #f7faf6;
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    transition: background .3s;
+}
+
+h1, h2, h3 {
+    font-family: Manrope, sans-serif;
+    line-height: 1.2;
+    margin: 0 0 12px;
+}
+
+p {
+    margin: 0 0 14px;
+}
+
+.hero {
+    min-height: 340px;
+    padding: 58px max(7vw, 24px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    background: linear-gradient(115deg, #153f31, #287451 65%, #78a96b);
+    color: white;
+    overflow: hidden;
+}
+
+.hero-inner {
+    max-width: 680px;
+}
+
+.eyebrow {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .16em;
+    color: #4b8a66;
+    margin-bottom: 12px;
+}
+
+.hero .eyebrow {
+    color: #bde4c6;
+}
+
+.hero h1 {
+    font-size: clamp(2.3rem, 5vw, 4.3rem);
+    letter-spacing: -.05em;
+    margin-bottom: 14px;
+}
+
+.hero p:not(.eyebrow) {
+    font-size: 1.08rem;
+    color: #e0f0e3;
+    max-width: 590px;
+}
+
+.hero-art {
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    white-space: nowrap;
+    filter: drop-shadow(0 12px 14px #102c2480);
+    transform: rotate(-5deg);
+}
+
+.primary-link {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 15px;
+    padding: 12px 19px;
+    background: #fff;
+    color: #20583d;
+    text-decoration: none;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+main {
+    max-width: 1160px;
+    margin: auto;
+    padding: 0 28px;
+}
+
+.section {
+    padding: 68px 0;
+}
+
+.intro {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.intro h2, .section h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: -.04em;
+}
+
+.intro > div:first-child > p:last-child,
+.section-copy {
+    color: var(--muted);
+    max-width: 680px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.stats div {
+    padding: 18px 12px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.stats strong {
+    display: block;
+    font: 800 1.8rem Manrope;
+    color: var(--green);
+}
+
+.stats span {
+    font-size: .8rem;
+    color: var(--muted);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    margin: 0;
+}
+
+.button {
+    border: 0;
+    border-radius: 8px;
+    padding: 11px 15px;
+    font: 700 .88rem 'DM Sans';
+    cursor: pointer;
+    transition: transform .2s, background .2s;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.button-dark {
+    background: #245d42;
+    color: white;
+}
+
+.button-dark:hover {
+    background: #17452f;
+}
+
+.zoo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.zone-card {
+    position: relative;
+    padding: 24px;
+    border-radius: 17px;
+    border: 1px solid #e4ece3;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    min-height: 330px;
+}
+
+.forest {
+    background: linear-gradient(145deg, #eaf5e9, #fff);
+}
+
+.savannah {
+    background: linear-gradient(145deg, #fff3dc, #fff);
+}
+
+.water {
+    background: linear-gradient(145deg, #e4f4f8, #fff);
+}
+
+.zone-icon {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+}
+
+.zone-tag {
+    font-size: .68rem;
+    letter-spacing: .14em;
+    font-weight: 700;
+    color: #71877a;
+    margin-bottom: 7px;
+}
+
+.zone-card h3 {
+    font-size: 1.35rem;
+}
+
+.zone-description {
+    font-size: .9rem;
+    color: var(--muted);
+    min-height: 44px;
+}
+
+.animal-list {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.animal {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: #ffffffc9;
+    border: 1px solid #e5ece4;
+    border-radius: 30px;
+    padding: 7px 11px;
+    font-size: .85rem;
+}
+
+.animal span {
+    font-size: 1.15rem;
+}
+
+.inspect-button {
+    background: #fff;
+    color: #285e43;
+    border: 1px solid #d9e6d9;
+}
+
+.inspect-button:hover {
+    background: #eaf4e9;
+}
+
+.dom-section {
+    border-top: 1px solid var(--line);
+}
+
+.live-pill {
+    font-size: .8rem;
+    color: var(--green);
+    background: #e8f4e9;
+    border-radius: 30px;
+    padding: 7px 12px;
+}
+
+.dom-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.inspector-card,
+.tree-card,
+.control-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+}
+
+.inspector-card h3,
+.tree-card h3,
+.control-card h3 {
+    font-size: 1.1rem;
+}
+
+.selected-name {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: var(--green);
+    margin: 5px 0;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.node-details {
+    margin-top: 20px;
+    border-top: 1px solid var(--line);
+}
+
+.node-details div {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 10px 0;
+    border-bottom: 1px solid #edf1ec;
+    font-size: .87rem;
+}
+
+.node-details span {
+    color: var(--muted);
+}
+
+.node-details strong {
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.tree {
+    font-size: .86rem;
+    padding: 10px 0 15px;
+}
+
+.tree-node {
+    display: inline-block;
+    background: #f0f5ef;
+    border: 1px solid #dce8db;
+    border-radius: 7px;
+    padding: 5px 10px;
+    margin: 4px 0;
+}
+
+.tree-node.root {
+    background: #dcefe0;
+    font-weight: 700;
+}
+
+.tree-node.selected-tree {
+    background: #d6ecdb;
+    border-color: #78ae86;
+    font-weight: 700;
+}
+
+.tree-branch {
+    margin-left: 24px;
+    padding-left: 15px;
+    border-left: 1px solid #a8c4ac;
+}
+
+.tree-leaves {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.small {
+    font-size: .78rem;
+    margin: 14px 0 0;
+}
+
+.tools-section {
+    border-top: 1px solid var(--line);
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 25px;
+}
+
+.control-icon {
+    font-size: 1.8rem;
+}
+
+.control-card p {
+    font-size: .85rem;
+    color: var(--muted);
+    min-height: 44px;
+}
+
+.control-card code {
+    background: #eef5ed;
+    color: #285e43;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+input, select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #dce6dc;
+    border-radius: 8px;
+    background: #fbfdfb;
+    font: inherit;
+    color: var(--ink);
+    margin: 5px 0 10px;
+    min-width: 0;
+}
+
+input:focus, select:focus {
+    outline: 2px solid #9bc8a5;
+    border-color: #5c9c70;
+}
+
+.control-card > .button {
+    width: 100%;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.message {
+    margin-top: 20px;
+    padding: 13px 16px;
+    border-radius: 9px;
+    background: #eaf4e9;
+    color: #285e43;
+    font-size: .9rem;
+}
+
+footer {
+    padding: 24px max(7vw, 24px);
+    background: #173e30;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+footer > span {
+    font-size: 1.4rem;
+}
+
+.footer-note {
+    margin-left: auto;
+    font-weight: 400;
+    color: #c5ddca;
+    font-size: .82rem;
+}
+
+body.theme-sunset {
+    background: #fff7ed;
+}
+
+body.theme-sunset .hero {
+    background: linear-gradient(115deg, #783e2c, #c77b3c);
+}
+
+body.theme-ocean {
+    background: #f0f8fc;
+}
+
+body.theme-ocean .hero {
+    background: linear-gradient(115deg, #16475e, #2686a0);
+}
+
+@media(max-width: 800px) {
+    .hero-art {
+        display: none;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .zoo-grid,
+    .control-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .dom-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 560px) {
+    main {
+        padding: 0 18px;
+    }
+
+    .hero {
+        padding: 45px 22px;
+        min-height: 300px;
+    }
+
+    .section {
+        padding: 48px 0;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .zoo-grid,
+    .control-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        gap: 6px;
+    }
+
+    .stats div {
+        padding: 13px 5px;
+    }
+
+    .stats strong {
+        font-size: 1.5rem;
+    }
+
+    .footer-note {
+        display: none;
+    }
+
+    .node-details div {
+        font-size: .8rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-inner">
+            <p class="eyebrow">HTML • CSS • JAVASCRIPT</p>
+            <h1>My Digital Zoo Manager</h1>
+            <p>Explore the animal kingdom while learning how the HTML DOM works.</p>
+            <a class="primary-link" href="#zoo">Explore the zoo ↓</a>
+        </div>
+        <div class="hero-art">🦁 🦒 🐘</div>
+    </header>
+
+    <main>
+        <section class="intro section">
+            <div>
+                <p class="eyebrow">WELCOME, ZOOKEEPER</p>
+                <h2>Your zoo, your rules.</h2>
+                <p>Every animal zone is an element in the DOM tree. Select a zone to inspect its parent, children and siblings. You can also change the zoo's content and appearance using JavaScript.</p>
+            </div>
+
+            <div class="stats">
+                <div>
+                    <strong id="zone-count">3</strong>
+                    <span>Animal zones</span>
+                </div>
+                <div>
+                    <strong id="animal-count">6</strong>
+                    <span>Animals</span>
+                </div>
+                <div>
+                    <strong id="action-count">0</strong>
+                    <span>DOM actions</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="zoo" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">THE HABITATS</p>
+                    <h2>Explore the zoo</h2>
+                </div>
+                <button id="add-zone" class="button button-dark">
+                    ＋ Add a new zone
+                </button>
+            </div>
+
+            <div id="zoo-container" class="zoo-grid">
+
+                <article class="zone-card forest" id="forest-zone">
+                    <div class="zone-icon">🌳</div>
+                    <p class="zone-tag">HABITAT 01</p>
+                    <h3>Forest Zone</h3>
+                    <p class="zone-description">Meet the animals that call the green forest home.</p>
+
+                    <ul class="animal-list">
+                        <li class="animal"><span>🦁</span> Lion</li>
+                        <li class="animal"><span>🐒</span> Monkey</li>
+                    </ul>
+
+                    <button class="button inspect-button" data-target="forest-zone">
+                        Inspect this zone
+                    </button>
+                </article>
+
+                <article class="zone-card savannah" id="savannah-zone">
+                    <div class="zone-icon">☀️</div>
+                    <p class="zone-tag">HABITAT 02</p>
+                    <h3>Savannah Zone</h3>
+                    <p class="zone-description">Discover amazing animals of the wide grasslands.</p>
+
+                    <ul class="animal-list">
+                        <li class="animal"><span>🦒</span> Giraffe</li>
+                        <li class="animal"><span>🦓</span> Zebra</li>
+                    </ul>
+
+                    <button class="button inspect-button" data-target="savannah-zone">
+                        Inspect this zone
+                    </button>
+                </article>
+
+                <article class="zone-card water" id="water-zone">
+                    <div class="zone-icon">💧</div>
+                    <p class="zone-tag">HABITAT 03</p>
+                    <h3>Water Zone</h3>
+                    <p class="zone-description">Dive in and say hello to our water-loving friends.</p>
+
+                    <ul class="animal-list">
+                        <li class="animal"><span>🐬</span> Dolphin</li>
+                        <li class="animal"><span>🐢</span> Turtle</li>
+                    </ul>
+
+                    <button class="button inspect-button" data-target="water-zone">
+                        Inspect this zone
+                    </button>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="section dom-section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">JAVASCRIPT DOM EXPLORER</p>
+                    <h2>Look inside the DOM</h2>
+                </div>
+                <span class="live-pill">● Live inspection</span>
+            </div>
+
+            <div class="dom-layout">
+
+                <div class="inspector-card">
+                    <h3>Selected element</h3>
+                    <p id="selected-name" class="selected-name">No zone selected</p>
+                    <p id="selected-help" class="muted">Choose "Inspect this zone" on any animal card.</p>
+
+                    <div class="node-details">
+                        <div>
+                            <span>Node type</span>
+                            <strong id="node-type">—</strong>
+                        </div>
+                        <div>
+                            <span>Parent element</span>
+                            <strong id="parent-node">—</strong>
+                        </div>
+                        <div>
+                            <span>Child elements</span>
+                            <strong id="child-nodes">—</strong>
+                        </div>
+                        <div>
+                            <span>Previous sibling</span>
+                            <strong id="previous-sibling">—</strong>
+                        </div>
+                        <div>
+                            <span>Next sibling</span>
+                            <strong id="next-sibling">—</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tree-card">
+                    <h3>Simple DOM tree</h3>
+
+                    <div class="tree">
+                        <div class="tree-node root">document</div>
+
+                        <div class="tree-branch">
+                            <div class="tree-node">body</div>
+
+                            <div class="tree-branch">
+                                <div class="tree-node">main</div>
+
+                                <div class="tree-branch">
+                                    <div class="tree-node selected-tree">zoo-container</div>
+
+                                    <div class="tree-branch tree-leaves">
+                                        <div class="tree-node">Forest Zone</div>
+                                        <div class="tree-node">Savannah Zone</div>
+                                        <div class="tree-node">Water Zone</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="muted small">The DOM is a tree of objects. Elements can have parents, children and siblings.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section tools-section">
+            <p class="eyebrow">PUT DOM METHODS TO WORK</p>
+            <h2>Zoo control room</h2>
+            <p class="section-copy">Use these controls to update the webpage with JavaScript DOM methods.</p>
+
+            <div class="control-grid">
+
+                <div class="control-card">
+                    <span class="control-icon">✍️</span>
+                    <h3>Change zoo title</h3>
+                    <p>Update the main heading using textContent.</p>
+                    <input id="title-input" type="text" placeholder="Enter a new zoo title">
+                    <button id="change-title" class="button button-dark">Update title</button>
+                </div>
+
+                <div class="control-card">
+                    <span class="control-icon">🎨</span>
+                    <h3>Change zoo theme</h3>
+                    <p>Change the page background using style.</p>
+
+                    <select id="theme-select">
+                        <option value="default">Fresh green</option>
+                        <option value="sunset">Warm sunset</option>
+                        <option value="ocean">Cool ocean</option>
+                    </select>
+
+                    <button id="change-theme" class="button button-dark">Apply theme</button>
+                </div>
+
+                <div class="control-card">
+                    <span class="control-icon">🐾</span>
+                    <h3>Add an animal</h3>
+                    <p>Create a new child node using createElement().</p>
+
+                    <div class="input-row">
+                        <input id="animal-input" type="text" placeholder="Animal name">
+
+                        <select id="animal-zone">
+                            <option value="forest-zone">Forest</option>
+                            <option value="savannah-zone">Savannah</option>
+                            <option value="water-zone">Water</option>
+                        </select>
+                    </div>
+
+                    <button id="add-animal" class="button button-dark">Add animal</button>
+                </div>
+
+            </div>
+
+            <div class="message" id="message" role="status">
+                Your zoo is ready. Try an action above!
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>🦁</span>
+        My Digital Zoo Manager
+        <span class="footer-note">Built with HTML, CSS & JavaScript</span>
+    </footer>
+
+    <script>
+        let actionCount = 0;
+
+const zooContainer = document.getElementById("zoo-container");
+const message = document.getElementById("message");
+
+function showMessage(text) {
+    message.textContent = text;
+}
+
+function countAction() {
+    actionCount++;
+
+    document.getElementById("action-count").textContent = actionCount;
+}
+
+function updateAnimalCount() {
+    document.getElementById("animal-count").textContent =
+        document.querySelectorAll(".animal").length;
+}
+
+function inspectZone(zoneId) {
+    const zone = document.getElementById(zoneId);
+
+    if (!zone) return;
+
+    const parent = zone.parentElement;
+    const children = Array.from(zone.children);
+    const previous = zone.previousElementSibling;
+    const next = zone.nextElementSibling;
+
+    document.getElementById("selected-name").textContent =
+        zone.querySelector("h3")?.textContent || zone.id;
+
+    document.getElementById("selected-help").textContent =
+        "This information was collected directly from the selected DOM element.";
+
+    document.getElementById("node-type").textContent =
+        zone.nodeType === Node.ELEMENT_NODE
+            ? "Element node (1)"
+            : `Node (${zone.nodeType})`;
+
+    document.getElementById("parent-node").textContent =
+        parent ? parent.id || parent.tagName.toLowerCase() : "None";
+
+    document.getElementById("child-nodes").textContent =
+        children.length
+            ? children.map(child => child.tagName.toLowerCase()).join(", ")
+            : "None";
+
+    document.getElementById("previous-sibling").textContent =
+        previous
+            ? previous.querySelector("h3")?.textContent || previous.tagName.toLowerCase()
+            : "None";
+
+    document.getElementById("next-sibling").textContent =
+        next
+            ? next.querySelector("h3")?.textContent || next.tagName.toLowerCase()
+            : "None";
+
+    countAction();
+
+    showMessage(
+        `Inspected ${zone.querySelector("h3")?.textContent || "zone"} using parentElement, children and sibling properties.`
+    );
+}
+
+document.querySelectorAll(".inspect-button").forEach(button => {
+    button.addEventListener("click", () => {
+        inspectZone(button.dataset.target);
+    });
+});
+
+document.getElementById("change-title").addEventListener("click", () => {
+    const value = document.getElementById("title-input").value.trim();
+
+    if (!value) {
+        showMessage("Please type a title first.");
+        return;
+    }
+
+    document.querySelector(".hero h1").textContent = value;
+
+    countAction();
+
+    showMessage("The zoo title has been updated with textContent.");
+});
+
+document.getElementById("change-theme").addEventListener("click", () => {
+    const theme = document.getElementById("theme-select").value;
+
+    document.body.classList.remove("theme-sunset", "theme-ocean");
+
+    if (theme === "sunset") {
+        document.body.classList.add("theme-sunset");
+    }
+
+    if (theme === "ocean") {
+        document.body.classList.add("theme-ocean");
+    }
+
+    if (theme === "default") {
+        document.body.style.backgroundColor = "#f7faf6";
+    } else {
+        document.body.style.backgroundColor = "";
+    }
+
+    countAction();
+
+    showMessage(`The ${theme} theme has been applied using classList and style.`);
+});
+
+document.getElementById("add-animal").addEventListener("click", () => {
+    const name = document.getElementById("animal-input").value.trim();
+
+    const zoneId = document.getElementById("animal-zone").value;
+
+    if (!name) {
+        showMessage("Please enter an animal name first.");
+        return;
+    }
+
+    const zone = document.getElementById(zoneId);
+
+    const list = zone.querySelector(".animal-list");
+
+    const animal = document.createElement("li");
+
+    animal.className = "animal";
+
+    animal.dataset.animal = name;
+
+    animal.textContent = `🐾 ${name}`;
+
+    list.appendChild(animal);
+
+    document.getElementById("animal-input").value = "";
+
+    updateAnimalCount();
+
+    countAction();
+
+    showMessage(
+        `${name} was added to the ${zone.querySelector("h3").textContent} using createElement() and appendChild().`
+    );
+});
+
+document.getElementById("add-zone").addEventListener("click", () => {
+    const number = zooContainer.querySelectorAll(".zone-card").length + 1;
+
+    const id = `new-zone-${number}`;
+
+    const zone = document.createElement("article");
+
+    zone.className = "zone-card forest";
+
+    zone.id = id;
+
+    zone.dataset.habitat = `New habitat ${number}`;
+
+    zone.innerHTML = `
+        <div class="zone-icon">🌿</div>
+        <p class="zone-tag">HABITAT ${String(number).padStart(2, "0")}</p>
+        <h3>New Animal Zone</h3>
+        <p class="zone-description">A brand-new habitat has joined our digital zoo.</p>
+        <ul class="animal-list">
+            <li class="animal">🐾 New animal</li>
+        </ul>
+        <button class="button inspect-button" data-target="${id}">
+            Inspect this zone
+        </button>
+    `;
+
+    zooContainer.appendChild(zone);
+
+    zone.querySelector(".inspect-button").addEventListener("click", () => {
+        inspectZone(id);
+    });
+
+    document.getElementById("zone-count").textContent =
+        zooContainer.querySelectorAll(".zone-card").length;
+
+    updateAnimalCount();
+
+    countAction();
+
+    showMessage("A new zone was created and appended to the zoo container.");
+});
+
+const demoText = document.createTextNode("");
+
+document.body.appendChild(demoText);
+
+console.log("DOM node type examples:");
+
+console.log("Element node type:", zooContainer.nodeType);
+
+console.log("Text node type:", document.createTextNode("Zoo").nodeType);
+
+console.log("Document node type:", document.nodeType);
+
+demoText.remove();
+
+updateAnimalCount();
+    </script>
+
+</body>
+</html>
